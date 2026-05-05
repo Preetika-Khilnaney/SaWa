@@ -38,6 +38,7 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.sava.auth.EmailLinkApi
 import com.example.sava.ui.theme.ChampagneGold
 import com.example.sava.ui.theme.DeepCharcoal
 import com.example.sava.ui.theme.OffWhite
@@ -47,6 +48,9 @@ import com.example.sava.ui.theme.adaptive
 import com.example.sava.ui.theme.rememberAdaptiveUi
 import com.example.sava.ui.theme.AdaptiveUi
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @Composable
 fun EmailLoginScreen(
@@ -172,13 +176,18 @@ fun EmailLoginScreen(
                         return@clickable
                     }
 
-                    auth.sendPasswordResetEmail(email)
-                        .addOnSuccessListener {
-                            helperMessage = "Password reset link sent to $email"
+                    CoroutineScope(Dispatchers.IO).launch {
+                        val result = EmailLinkApi.sendPasswordResetLink(email)
+                        launch(Dispatchers.Main) {
+                            result
+                                .onSuccess {
+                                    helperMessage = "Password reset link sent to $email"
+                                }
+                                .onFailure {
+                                    helperMessage = "We couldn't send a reset link right now. Please try again."
+                                }
                         }
-                        .addOnFailureListener {
-                            helperMessage = "We couldn't send a reset link right now. Please try again."
-                        }
+                    }
                 }
             )
 

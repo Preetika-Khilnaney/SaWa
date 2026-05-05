@@ -9,9 +9,17 @@ import java.net.URL
 
 object EmailLinkApi {
     fun sendSignInLink(email: String, fullName: String): Result<Unit> {
+        return post("/api/send-signin-link", email, fullName)
+    }
+
+    fun sendPasswordResetLink(email: String): Result<Unit> {
+        return post("/api/send-password-reset", email, null)
+    }
+
+    private fun post(path: String, email: String, fullName: String?): Result<Unit> {
         return runCatching {
             val baseUrl = BuildConfig.EMAIL_API_BASE_URL.trimEnd('/')
-            val url = URL("$baseUrl/api/send-signin-link")
+            val url = URL("$baseUrl$path")
             val connection = (url.openConnection() as HttpURLConnection).apply {
                 requestMethod = "POST"
                 connectTimeout = 15000
@@ -23,8 +31,14 @@ object EmailLinkApi {
 
             val payload = JSONObject()
                 .put("email", email)
-                .put("fullName", fullName)
                 .toString()
+                .let {
+                    if (fullName != null) {
+                        JSONObject(it).put("fullName", fullName).toString()
+                    } else {
+                        it
+                    }
+                }
 
             OutputStreamWriter(connection.outputStream, Charsets.UTF_8).use { writer ->
                 writer.write(payload)
