@@ -56,10 +56,7 @@ module.exports = async (req, res) => {
   try {
     initializeFirebaseAdmin();
 
-    const link = await admin.auth().generatePasswordResetLink(email, {
-      url: "https://sawa-6e057.web.app/passwordReset",
-      handleCodeInApp: false,
-    });
+    const link = await admin.auth().generatePasswordResetLink(email);
 
     const resend = new Resend(process.env.RESEND_API_KEY);
 
