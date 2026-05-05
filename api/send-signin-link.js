@@ -94,6 +94,9 @@ module.exports = async (req, res) => {
     res.status(200).json({success: true});
   } catch (error) {
     console.error("Failed to send sign-in link email", error);
-    res.status(500).json({error: "Could not send sign-in link email"});
+    res.status(500).json({
+      error: "Could not send sign-in link email",
+      details: error && error.message ? error.message : String(error),
+    });
   }
 };
