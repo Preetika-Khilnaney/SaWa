@@ -1,0 +1,7 @@
+{
+  "functions": {
+    "api/send-signin-link.js": {
+      "maxDuration": 10
+    }
+  }
+}

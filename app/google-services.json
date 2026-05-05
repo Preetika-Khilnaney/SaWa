@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1091992677481",
+    "project_id": "sawa-6e057",
+    "storage_bucket": "sawa-6e057.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1091992677481:android:2a451f573ab2cceca7c6f8",
+        "android_client_info": {
+          "package_name": "com.example.sava"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1091992677481-31h5jfrlqhrfqe6r0do5ilgkuk6rtlqo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.sava",
+            "certificate_hash": "05e012532f7e7558bfcf0f67d136177515fc7410"
+          }
+        },
+        {
+          "client_id": "1091992677481-6jgurljl7n64ukgronrttlusje9hc5qg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDPdELImw7o-Gk_MeOeSHkUiaWBagsg25I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1091992677481-6jgurljl7n64ukgronrttlusje9hc5qg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

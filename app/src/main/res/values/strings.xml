@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Sava</string>
+    <string name="firebase_web_client_id_fallback">YOUR_WEB_CLIENT_ID</string>
+</resources>

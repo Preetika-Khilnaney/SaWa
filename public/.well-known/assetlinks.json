@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.example.sava",
+      "sha256_cert_fingerprints": [
+        "78:8E:70:0D:F1:DC:27:9B:65:75:FF:36:E7:53:0C:A7:85:F9:30:5F:C5:C8:6C:58:DE:0C:49:C3:F2:9A:50:FB"
+      ]
+    }
+  }
+]
